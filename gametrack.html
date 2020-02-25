@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Game Track</h1>
+    </div>
+    <div class="content">
+        <div>
+            <h2>Player 1</h2>
+            <button id="playerOne" onclick="increaseScorePOne()">+1</button>
+        </div>
+        <div>
+            <h2>Player 2</h2>
+            <button id="playerTwo">+1</button>
+        </div>
+    </div>
+    <div class="reset">
+        <button onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        var playerOneCount = 0;
+        var playerTwoCount = 0;
+        var playerOneButton = document.getElementById("playerOne")
+        var playerTwoButton = document.getElementById("playerTwo")
+
+        function increaseScorePOne(){
+            playerOneCount++;
+            document.getElementById("playerOne").innerHTML = playerOneCount;
+            if (playerOneCount > playerTwoCount){
+                playerOneButton.classList.toggle("winning");
+            }
+            else {
+                playerTwoButton.classList.toggle("winning");
+            }
+        }
+
+        function increaseScorePTwo(){
+            playerTwoCount++;
+            document.getElementById("playerTwo").innerHTML = playerTwoCount;
+            if (playerTwoCount > playerOneCount){
+                playerTwoButton.classList.toggle("winning");
+            }
+            else {
+                playerOneButton.classList.toggle("winning");
+            }
+        }
+
+        function reset(){
+            playerOneCount = 0;
+            playerTwoCount = 0;
+            document.getElementById("playerOne").innerHTML = "+1";
+            document.getElementById("playerTwo").innerHTML = "+1";
+            playerOneButton.style.background = "#fafafa";
+        }
+
+        
+
+    </script>
+</body>
+</html>
